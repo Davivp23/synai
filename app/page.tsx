@@ -11,8 +11,8 @@ export default function Home() {
           lineDistance={[50]}
           mouseDamping={0.01}
           parallax={false}
-          middleWavePosition={{ x: 0, y: 0.5, rotate: 0 }}
-          bottomWavePosition={{ x: 0, y: 0.5, rotate: 0 }}
+          middleWavePosition={{ x: 0, y: -0.5, rotate: 0 }}
+          bottomWavePosition={{ x: 0, y: -0.5, rotate: 0 }}
         />
       </div>
 
