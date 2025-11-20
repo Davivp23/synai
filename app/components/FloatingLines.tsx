@@ -439,7 +439,7 @@ export default function FloatingLines({
     let raf = 0;
     const renderLoop = () => {
       const scrollY = window.scrollY || 0;
-      const baseTime = clock.getElapsedTime();
+      const baseTime = clock.getElapsedTime() * 1;
       const scrollOffset = scrollY * scrollSpeed;
       uniforms.iTime.value = baseTime + scrollOffset;
 
