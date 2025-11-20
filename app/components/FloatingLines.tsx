@@ -227,6 +227,7 @@ type FloatingLinesProps = {
   parallax?: boolean;
   parallaxStrength?: number;
   mixBlendMode?: React.CSSProperties['mixBlendMode'];
+  scrollSpeed?: number;
 };
 
 function hexToVec3(hex: string): Vector3 {
@@ -268,7 +269,8 @@ export default function FloatingLines({
   mouseDamping = 0.05,
   parallax = true,
   parallaxStrength = 0.2,
-  mixBlendMode = 'screen'
+  mixBlendMode = 'screen',
+  scrollSpeed = 0.0
 }: FloatingLinesProps) {
   const containerRef = useRef<HTMLDivElement | null>(null);
   const targetMouseRef = useRef<Vector2>(new Vector2(-1000, -1000));
@@ -436,7 +438,10 @@ export default function FloatingLines({
 
     let raf = 0;
     const renderLoop = () => {
-      uniforms.iTime.value = clock.getElapsedTime();
+      const scrollY = window.scrollY || 0;
+      const baseTime = clock.getElapsedTime();
+      const scrollOffset = scrollY * scrollSpeed;
+      uniforms.iTime.value = baseTime + scrollOffset;
 
       if (interactive) {
         currentMouseRef.current.lerp(targetMouseRef.current, mouseDamping);
@@ -488,7 +493,8 @@ export default function FloatingLines({
     bendStrength,
     mouseDamping,
     parallax,
-    parallaxStrength
+    parallaxStrength,
+    scrollSpeed
   ]);
 
   return (

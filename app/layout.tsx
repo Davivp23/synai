@@ -1,6 +1,7 @@
 import type { Metadata } from 'next'
 import { Playfair_Display, Outfit } from 'next/font/google'
 import './globals.css'
+import SmoothScroll from './components/Scroll'
 
 const playfair = Playfair_Display({
   subsets: ['latin'],
@@ -26,7 +27,11 @@ export default function RootLayout({
 }) {
   return (
     <html lang="es" className={`${playfair.variable} ${outfit.variable}`}>
-      <body className="font-sans">{children}</body>
+      <body className="font-sans">
+        <SmoothScroll>
+          {children}
+        </SmoothScroll>
+      </body>
     </html>
   )
 }
