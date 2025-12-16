@@ -7,7 +7,7 @@ const GlassChatMock = () => {
     { id: 1, text: "Hola, ¿en qué puedo ayudarte hoy?", sender: 'bot' },
   ]);
 
-  const handleSend = (e) => {
+  const handleSend = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     if (!input.trim()) return;
     
